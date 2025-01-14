@@ -1,14 +1,12 @@
-package cuoiki.statistics;
+package practice.statistics;
 
-import practice.statistics.DataSet;
-
-public class BasicStatistic implements Statistic {
-    private practice.statistics.DataSet dataSet;
+public class BasicStatistics implements Statistics {
+    private DataSet dataSet;
 
     /**
      * Hàm dựng khởi tạo tập dữ liệu.
      */
-    public BasicStatistic() {
+    public BasicStatistics() {
         /* TODO */
         this.dataSet = null;
     }
@@ -70,9 +68,9 @@ public class BasicStatistic implements Statistic {
     }
 
     @Override
-    public double[] rank() {
+    public AbstractDataSet rank() {
         /* TODO */
-        return new double[1];
+        return new ArrayDataSet();
     }
 
     @Override

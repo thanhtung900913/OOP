@@ -1,4 +1,4 @@
-package cuoiki.mylist;
+package home_work.lab12.mylist;
 
 public class MyLinkedList extends MyAbstractList {
     private MyLinkedListNode head;
@@ -10,7 +10,7 @@ public class MyLinkedList extends MyAbstractList {
     public MyLinkedList() {
         /* TODO */
         this.head = null;
-        this.size = 0;
+        size = 0;
     }
 
     /**
@@ -20,7 +20,7 @@ public class MyLinkedList extends MyAbstractList {
     @Override
     public int size() {
         /* TODO */
-        return this.size;
+        return size;
     }
 
     /**
@@ -41,11 +41,12 @@ public class MyLinkedList extends MyAbstractList {
     @Override
     public void remove(int index) {
         /* TODO */
-        if (index == 0){
+        if(index == 0){
             head = head.getNext();
+        }else {
+            MyLinkedListNode prev = getNodeByIndex(index-1);
+            prev.setNext(prev.getNext().getNext());
         }
-        MyLinkedListNode prev = getNodeByIndex(index-1);
-        prev.setNext(prev.getNext().getNext());
         size--;
     }
 
@@ -57,11 +58,10 @@ public class MyLinkedList extends MyAbstractList {
     public void append(Object payload) {
         /* TODO */
         MyLinkedListNode newNode = new MyLinkedListNode(payload);
-        if (this.head == null){
+        if(head == null){
             this.head = newNode;
-        }else {
-            getNodeByIndex(size-1).setNext(newNode);
         }
+        getNodeByIndex(size-1).setNext(newNode);
         size++;
     }
 
@@ -74,13 +74,9 @@ public class MyLinkedList extends MyAbstractList {
     public void insert(Object payload, int index) {
         /* TODO */
         MyLinkedListNode newNode = new MyLinkedListNode(payload);
-        if(index == 0){
-            this.head = newNode;
-        }else {
-            MyLinkedListNode prev = getNodeByIndex(index-1);
-            newNode.setNext(prev.getNext());
-            prev.setNext(newNode);
-        }
+        MyLinkedListNode prev = getNodeByIndex(index-1);
+        newNode.setNext(prev.getNext());
+        prev.setNext(newNode);
         size++;
     }
 
